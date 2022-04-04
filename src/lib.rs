@@ -40,7 +40,7 @@
 //!
 //! let first = "abcdefghijklmnopqrstuvwxyz".chars().collect::<Vec<_>>();
 //! let second = "kxcnarvmwyp".chars().collect::<Vec<_>>();
-//! let rbo_val = rbo(&first,&second,0.99);
+//! let rbo_val = rbo(&first,&second,0.99).expect("valid rbo");
 //! println!("{}",rbo_val);
 //! ```
 
@@ -48,10 +48,13 @@ mod state;
 
 use thiserror::Error;
 
+/// Different RBO error conditions
 #[derive(Error, Debug)]
 pub enum RboError {
+    /// Persistance parameter p must be 0.0 <= p < 1.0
     #[error("Persistance parameter p must be 0.0 <= p < 1.0")]
     InvalidPersistance,
+    /// Individual ranked lists should not contain duplicates
     #[error("Individual ranked lists should not contain duplicates")]
     DuplicatesInList,
 }
