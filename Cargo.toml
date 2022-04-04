@@ -1,0 +1,38 @@
+[package]
+name = "rbo"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+authors = ["Matthias Petri <Matthias.Petri@gmail.com>"]
+readme = "README.md"
+keywords = ["rbo", "rank biased overlap", "similarity metric"]
+repository = "https://github.com/mpetri/rbo"
+homepage = "https://github.com/mpetri/rbo"
+documentation = "https://docs.rs/rbo"
+description = """
+Rank-Biased Overlap (RBO): a similarity measure for indefinite ranked lists. see
+
+@article{wmz10:acmtois,
+    author = "Webber, William and Moffat, Alistair and Zobel, Justin",
+    title = "A similarity measure for indefinite rankings",
+    journal = "ACM Transactions on Information Systems",
+    year = {2010},
+}
+
+for details.
+"""
+
+[[bin]]
+name = "rbo"
+path = "src/bin/rbo.rs"
+
+[dev-dependencies]
+rand = "0.8.5"
+serde = { version = "1.0.136", features = ["derive"] }
+serde_json = "1.0.79"
+approx = "0.5.1"
+
+[dependencies]
+anyhow = "1.0.56"
+clap = { version = "3.1.8", features = ["derive"] }
+thiserror = "1.0.30"
