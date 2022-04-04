@@ -10,7 +10,6 @@
 //!     title = "A similarity measure for indefinite rankings",
 //!     journal = "ACM Transactions on Information Systems",
 //!     year = {2010},
-//!     note = "to appear",
 //! }
 //!```
 //!
