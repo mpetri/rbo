@@ -4,6 +4,7 @@
 //!
 //! This code implements the RBO metric, as described in:
 //!
+//! ```
 //! @article{wmz10:acmtois,
 //!     author = "Webber, William and Moffat, Alistair and Zobel, Justin",
 //!     title = "A similarity measure for indefinite rankings",
@@ -11,7 +12,7 @@
 //!     year = {2010},
 //!     note = "to appear",
 //! }
-//!
+//!```
 //!
 //!
 //! The fundamental step in the working of RBO is the calculation
@@ -30,14 +31,17 @@
 //! Note that we do not require separate lookup sets for each list: we
 //! only record elements if they've only been encountered once.
 //!
-//! This code and docs were adapted from the original RBO codebase of William Webber
+//! This code and docs were adapted from the original RBO codebase of William Webber.
+//!
+//! # Example:
 //!
 //! ```
 //! use rbo::rbo;
 //!
-//! let first = [1, 2, 3];
-//! let second = [1, 3, 2];
-//! let rbo_val = rbo(&first,&second,0.9);
+//! let first = "abcdefghijklmnopqrstuvwxyz".chars().collect::<Vec<_>>();
+//! let second = "kxcnarvmwyp".chars().collect::<Vec<_>>();
+//! let rbo_val = rbo(&first,&second,0.99);
+//! println!("{}",rbo_val);
 //! ```
 
 mod state;
