@@ -1,9 +1,10 @@
-# rbo
+# Rank-Biased Overlap (RBO) 
 
 The RBO indefinite rank similarity metric.
 
 This code implements the RBO metric, as described in:
 
+```
 @article{wmz10:acmtois,
     author = "Webber, William and Moffat, Alistair and Zobel, Justin",
     title = "A similarity measure for indefinite rankings",
@@ -11,6 +12,7 @@ This code implements the RBO metric, as described in:
     year = {2010},
     note = "to appear",
 }
+```
 
 
 The fundamental step in the working of RBO is the calculation
@@ -37,6 +39,14 @@ use rbo::rbo;
 let first = [1, 2, 3];
 let second = [1, 3, 2];
 let rbo_val = rbo(&first,&second,0.9);
+println!("{}",rbo_val);
 ```
 
-License: MIT
+# Correctness
+
+This code tests against the original `rbo_ext` implementation by William Webber and 
+against another reference implementation for `rbo_min` and `rbo_res`.
+
+# License
+
+MIT

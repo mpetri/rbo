@@ -156,7 +156,7 @@ mod tests {
     }
 
     #[test]
-    fn permute_comparison_to_william_webber() {
+    fn ext_permute_comparison_to_william_webber() {
         let mut d = std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR"));
         d.push("test_data/permute_abc.json");
         let test_data_file = std::fs::File::open(d).expect("open test data file");
@@ -173,7 +173,7 @@ mod tests {
     }
 
     #[test]
-    fn uneven_comparison_to_william_webber() {
+    fn ext_uneven_comparison_to_william_webber() {
         let mut d = std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR"));
         d.push("test_data/uneven_abc.json");
         let test_data_file = std::fs::File::open(d).expect("open test data file");
@@ -182,9 +182,35 @@ mod tests {
         let first = "abcdefghijklmnopqrstuvwxyz".chars().collect::<Vec<_>>();
         for t in test_cases {
             let second = t.other.chars().collect::<Vec<_>>();
-            println!("first {:?} , second {:?}, p {}", &first, &second, t.p);
             let computed_rbo = super::rbo(&first, &second, t.p).expect("valid rbo");
             approx::assert_abs_diff_eq!(computed_rbo.extrapolated, t.rbo, epsilon = 0.001);
+        }
+    }
+
+    #[derive(serde::Serialize, serde::Deserialize, Debug)]
+    struct TestCaseSp {
+        other: String,
+        p: f64,
+        rbo_ext: f64,
+        rbo_min: f64,
+        rbo_res: f64,
+    }
+
+    #[test]
+    fn uneven_comparison_to_sp() {
+        let mut d = std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR"));
+        d.push("test_data/uneven_abc_sp.json");
+        let test_data_file = std::fs::File::open(d).expect("open test data file");
+        let test_cases: Vec<TestCaseSp> =
+            serde_json::from_reader(&test_data_file).expect("read test data");
+        let first = "abcdefghijklmnopqrstuvwxyz".chars().collect::<Vec<_>>();
+        for t in test_cases {
+            let second = t.other.chars().collect::<Vec<_>>();
+            let computed_rbo = super::rbo(&first, &second, t.p).expect("valid rbo");
+            dbg!(&first, &second, &computed_rbo, t.p);
+            approx::assert_abs_diff_eq!(computed_rbo.extrapolated, t.rbo_ext, epsilon = 0.001);
+            approx::assert_abs_diff_eq!(computed_rbo.min, t.rbo_min, epsilon = 0.001);
+            approx::assert_abs_diff_eq!(computed_rbo.residual, t.rbo_res, epsilon = 0.001);
         }
     }
 }

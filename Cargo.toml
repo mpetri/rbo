@@ -1,6 +1,6 @@
 [package]
 name = "rbo"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2021"
 license = "MIT"
 authors = ["Matthias Petri <Matthias.Petri@gmail.com>"]
@@ -34,5 +34,5 @@ approx = "0.5.1"
 
 [dependencies]
 anyhow = "1.0.56"
-clap = { version = "3.1.8", features = ["derive"] }
+pico-args = "0.4.2"
 thiserror = "1.0.30"

@@ -109,7 +109,7 @@ impl<'a, Item: Eq + Hash> RboState<'a, Item> {
         let second: f64 = (s + 1..=l)
             .map(|d| (x_s * (d - s) as f64) / (s * d) as f64 * p.powf(d as f64))
             .sum();
-        let third = (x_l - x_s) / l as f64 + (x_s / s as f64) * p_l;
+        let third = ((x_l - x_s) / l as f64 + (x_s / s as f64)) * p_l;
         (1.0 - p) / p * (first + second) + third
     }
 
