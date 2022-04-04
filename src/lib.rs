@@ -12,25 +12,27 @@
 //!     year = {2010},
 //! }
 //!```
+//! # What is RBO (taken from the paper)
 //!
+//! The rank-biased overlap (RBO) measure is based on a simple probabilistic user
+//! model. This measure is based on (but is not tied to) a simple user model in
+//! which the user compares the overlap of the two rankings at incrementally
+//! increasing depths. The user has a certain level of patience, parameterized
+//! in the model, and after examining each depth has a fixed probability of stopping,
+//! modelled as a Bernoulli random variable. RBO is then calculated as the
+//! expected average overlap that the user observes in comparing the two lists. The measure
+//! takes a parameter that specifies the user’s persistence `p`, that is, the probability that the user,
+//! having examined the overlap at one rank, continues on to consider the overlap at the next.
 //!
-//! The fundamental step in the working of RBO is the calculation
-//! of overlap `X_d`, or size of intersection, between the two rankings
-//! at each depth.  The key insight is that:
+//! The (convergent) sum of the weights of the (potentially infinite) tail determines the
+//! gap or `residual` between the `minimum` and maximum similarity scores that could be attained
+//! on exhaustive evaluation. The minimum, maximum, and residual scores on partial RBO evaluation
+//! are all monotonic in depth. A point score can also be `extrapolated`.
 //!
-//!    $X_{d+1} = X_{d} + I(S_{d+1} \in T_{1:{d+1}})
-//!                     + I(T_{d+1} \in S_{1:{d+1}})
+//! # Correctness
 //!
-//! where $S$ and $T$ are the two lists, and $I$ is the indicator function,
-//! return $1$ if the enclosed statement is true, $0$ otherwise.
-//! That is, the overlap at the next depth is the overlap at the current
-//! depth, plus one each if the next element in one list is found by
-//! the next depth in the other list.  To implement this efficiently,
-//! we keep a lookup set of the elements encountered in each list to date.
-//! Note that we do not require separate lookup sets for each list: we
-//! only record elements if they've only been encountered once.
-//!
-//! This code and docs were adapted from the original RBO codebase of William Webber.
+//! This code tests against the original `rbo_ext` implementation by William Webber and
+//! against another reference implementation for `rbo_min` and `rbo_res`.
 //!
 //! # Example:
 //!
