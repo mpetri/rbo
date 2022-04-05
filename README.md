@@ -11,7 +11,6 @@ This code implements the RBO metric, as described in:
     journal = "ACM Transactions on Information Systems",
     year = {2010},
 }
-
 ```
 # What is RBO (taken from the paper)
 
@@ -29,6 +28,17 @@ The (convergent) sum of the weights of the (potentially infinite) tail determine
 gap or `residual` between the `minimum` and maximum similarity scores that could be attained
 on exhaustive evaluation. The minimum, maximum, and residual scores on partial RBO evaluation
 are all monotonic in depth. A point score can also be `extrapolated`.
+
+# Usage
+
+Either via `cargo install`
+
+```
+cargo install rbo
+./rbo -p 0.8 first_list.txt second_list.txt
+```
+
+or as a library call
 
 ```rust
 use rbo::rbo;

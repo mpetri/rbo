@@ -1,6 +1,6 @@
 [package]
 name = "rbo"
-version = "0.2.5"
+version = "0.2.6"
 edition = "2021"
 license = "MIT"
 authors = ["Matthias Petri <Matthias.Petri@gmail.com>"]
