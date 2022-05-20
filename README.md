@@ -1,4 +1,11 @@
-# Rank-Biased Overlap (RBO) 
+# Rank-Biased Overlap (RBO) [![Crates.io][crates-badge]][crates-url] [![Docs.rs][docs-badge]][docs-rs] [![MIT licensed][mit-badge]][mit-url]
+
+[crates-badge]: https://img.shields.io/crates/v/rbo.svg
+[crates-url]: https://crates.io/crates/rbo
+[mit-badge]: https://img.shields.io/badge/license-MIT-blue.svg
+[mit-url]: https://opensource.org/licenses/MIT
+[docs-rs]: https://docs.rs/rbo
+[docs-badge]: https://img.shields.io/docsrs/rbo/0.2.6
 
 The RBO indefinite rank similarity metric.
 
