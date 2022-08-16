@@ -4,7 +4,7 @@
 //!
 //! This code implements the RBO metric, as described in:
 //!
-//! ```
+//! ```ignore
 //! @article{wmz10:acmtois,
 //!     author = "Webber, William and Moffat, Alistair and Zobel, Justin",
 //!     title = "A similarity measure for indefinite rankings",
